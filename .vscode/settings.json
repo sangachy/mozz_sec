@@ -7,6 +7,8 @@
         "opensource",
         "pydantic",
         "securecat",
+        "seninfo",
+        "starlette"
     ],
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.pytestParameters": true,
