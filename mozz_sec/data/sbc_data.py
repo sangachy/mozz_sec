@@ -7,19 +7,25 @@ from pydantic.alias_generators import to_camel
 
 class ScanType(BaseModel):
     """
-    Represents a scan type for a tasks.
+    Represents the scan type.
 
-    Args:
-        opensource (bool, optional): Indicates if the scan includes open source analysis. Defaults to False.
-        binscope (bool, optional): Indicates if the scan includes binary scope analysis. Defaults to False.
-        seninfo (bool, optional): Indicates if the scan includes sensitive information analysis. Defaults to False.
-        securecat (bool, optional): Indicates if the scan includes secure catalog analysis. Defaults to False.
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - json_schema_extra: An optional JSON schema example for the configuration.
+            - alias_generator: A function used to generate aliases for the configuration.
+        opensource: A boolean indicating whether to perform opensource scanning.
+        binscope: A boolean indicating whether to perform binscope scanning.
+        seninfo: A boolean indicating whether to perform seninfo scanning.
+        securecat: A boolean indicating whether to perform securecat scanning.
+
+    Raises:
+        ValueError: If all scan types are set to False.
 
     Returns:
-        None
-    Examples:
-            >>> scan_type = ScanType(opensource=False, binscope=False, seninfo=True, securecat=False)
+        ScanType: The updated ScanType object.
     """
+    
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,14 +56,22 @@ class ScanType(BaseModel):
 
 class FileBlackList(BaseModel):
     """
-    Represents a file black-list for Mozzarella SBC data.
+    Represents the file blacklist.
 
-    Args:
-        regex (str): The regular expression pattern for matching file names.
-        examples (List[str]): The list of example file names.
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - json_schema_extra: An optional JSON schema example for the configuration.
+            - alias_generator: A function used to generate aliases for the configuration.
+        regex: The regular expression pattern for matching file names.
+        examples: A list of example file names.
+
+    Raises:
+        ValueError: If the regular expression pattern does not match any of the example file names.
 
     Returns:
-        None"""
+        FileBlackList: The updated FileBlackList object.
+    """
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,16 +95,22 @@ class FileBlackList(BaseModel):
 
 class TestDataSbc(BaseModel):
     """
-    Represents SBC data for Mozzarella.
+    Represents the test data for SBC.
 
-    Args:
-        url_list (List[str]): The list of URLs.
-        scan_type (ScanType): The scan type.
-        path_whitelist (List[str], optional): The list of path whitelists. Defaults to an empty list.
-        file_blacklist (List[str], optional): The list of file blacklists. Defaults to an empty list.
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - json_schema_extra: An optional JSON schema example for the configuration.
+            - alias_generator: A function used to generate aliases for the configuration.
+        url_list: A list of HTTP URLs.
+        scan_type: The scan type. It is a ScanType object.
+        path_whitelist: A list of whitelisted paths.
+        file_blacklist: A list of blacklisted file names.
+        rerun: A boolean indicating whether to rerun the test.
 
     Returns:
-        None"""
+        TestDataSbc: The updated TestDataSbc object.
+    """
 
     model_config = ConfigDict(
         populate_by_name=True,

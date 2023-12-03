@@ -7,14 +7,39 @@ from pydantic.alias_generators import to_camel
 from pydantic_core import Url
 
 from mozz_sec.data.bas_data import TestDataBas
-from mozz_sec.services.tasks.task import BaseExecTask, BaseSubTask, BaseTaskDetail
+from mozz_sec.services.tasks.task import BaseExecTask, BaseSubTask, TaskWithDetail
 
 
 class SubBasTask(BaseSubTask):
+    """
+    Represents a subtask for BAS.
+
+    Inherits from BaseSubTask.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - alias_generator: A function used to generate aliases for the configuration.
+    """
+
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
 
-class BasTaskDetail(BaseTaskDetail):
+class BasTaskDetail(TaskWithDetail):
+    """
+    Represents the task detail for BAS.
+
+    Inherits from BaseTaskDetail.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - alias_generator: A function used to generate aliases for the configuration.
+        bas_vm_policy_url: The URL for the BAS VM policy.
+        bas_container_policy_url: The URL for the BAS container policy.
+        params: The test data for BAS. It is a TestDataBas object.
+    """
+
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
     bas_vm_policy_url: Url
@@ -22,7 +47,20 @@ class BasTaskDetail(BaseTaskDetail):
     params: TestDataBas = Field(default_factory=TestDataBas, exclude=True)
 
 
-class BasCleanseTask(BaseTaskDetail):
+class BasCleanseTask(TaskWithDetail):
+    """
+    Represents the cleanse task for BAS.
+
+    Inherits from BaseTaskDetail.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - alias_generator: A function used to generate aliases for the configuration.
+        bas_vm_policy_url: The URL for the BAS VM policy.
+        bas_container_policy_url: The URL for the BAS container policy.
+    """
+
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
     bas_vm_policy_url: Url
@@ -30,6 +68,37 @@ class BasCleanseTask(BaseTaskDetail):
 
 
 class BasExecTask(BaseExecTask):
+    """
+    Represents the execution task for BAS.
+
+    Inherits from BaseExecTask.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - alias_generator: A function used to generate aliases for the configuration.
+        detail: The task detail for BAS. It is a BasTaskDetail object.
+
+    Args:
+        **data: Additional keyword arguments to initialize the task.
+
+    Returns:
+        None.
+    """
+
+    def __init__(self, **data: Any):
+        """
+        Initializes a new instance of BasExecTask.
+
+        Args:
+            **data: Additional keyword arguments to initialize the task.
+
+        Returns:
+            None.
+        """
+        super().__init__(**data)
+        self.task_type = "BAS_EXEC"
+
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
     detail: BasTaskDetail = Field(default_factory=BasTaskDetail)
@@ -40,6 +109,18 @@ class BasExecTask(BaseExecTask):
 
 
 class BasExecTaskOut(BasExecTask):
+    """
+    Represents the output task for BAS execution.
+
+    Inherits from BasExecTask.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - alias_generator: A function used to generate aliases for the configuration.
+        detail: The cleanse task detail for BAS. It is a BasCleanseTask object.
+    """
+
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
     detail: BasCleanseTask

@@ -2,12 +2,17 @@
     "cSpell.words": [
         "binscope",
         "fastapi",
+        "loguru",
         "Mozz",
         "opensource",
         "pydantic",
         "securecat",
-        "seninfo"
     ],
     "python.analysis.inlayHints.functionReturnTypes": true,
-    "python.analysis.inlayHints.pytestParameters": true
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

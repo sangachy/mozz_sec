@@ -8,6 +8,24 @@ from mozz_sec.services.tasks.sbc_task import SbcCleanseTask
 
 
 class AnalyseTask(BaseModel):
+    """
+    Represents an analysis task.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - alias_generator: A function used to generate aliases for the configuration.
+        source: The source of the analysis task.
+        description: The description of the analysis task.
+        creator: The creator of the analysis task.
+        instance_id: The ID of the instance associated with the analysis task.
+        analysts: A list of analysts assigned to the analysis task.
+        pbi: The PBI (Product Backlog Item) associated with the analysis task.
+        strategy_task_id: The ID of the strategy task associated with the analysis task.
+        data: The data associated with the analysis task. It can be either a BasCleanseTask or SbcCleanseTask object.
+        task_type: The type of the analysis task.
+    """
+
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
     source: str

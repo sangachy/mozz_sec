@@ -41,7 +41,7 @@ class Common(BaseModel):
     Returns:
         None
     Examples:
-            >>> common = Common(pbi="25922505", instance_info=InstanceInfo(instance_id="123", task_id="456"))
+        >>> common = Common(pbi="25922505", instance_info=InstanceInfo(instance_id="123", task_id="456"))
     """
 
     model_config = ConfigDict(
@@ -62,10 +62,32 @@ class Common(BaseModel):
 
 
 class Params(BaseModel):
+    """
+    Represents the parameters for a model.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - json_schema_extra: An optional JSON schema example for the configuration.
+            - alias_generator: A function used to generate aliases for the configuration.
+    """
+    
     model_config = ConfigDict(populate_by_name=True, json_schema_extra={"example": [{}]}, alias_generator=to_camel)
 
 
 class EnvInfo(BaseModel):
+    """
+    Represents the environment information.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - json_schema_extra: An optional JSON schema example for the configuration.
+            - alias_generator: A function used to generate aliases for the configuration.
+        containers: A list of strings representing the available containers.
+        vms: A list of strings representing the available virtual machines.
+    """
+
     model_config = ConfigDict(
         populate_by_name=True,
         json_schema_extra={"example": [{"containers": ["All", "sm", "cmpcc"], "vms": ["None", "OMU", "PBUC"]}]},
@@ -77,6 +99,18 @@ class EnvInfo(BaseModel):
 
 
 class CommonData(BaseModel):
+    """
+    Represents the common data.
+
+    Attributes:
+        model_config: The configuration for the model. It is a ConfigDict object with the following properties:
+            - populate_by_name: A boolean indicating whether to populate the configuration by name.
+            - alias_generator: A function used to generate aliases for the configuration.
+        common: The common data. It is a Common object.
+        params: The parameters for the model. It is a Params object.
+        env_info: The environment information. It is an EnvInfo object.
+    """
+    
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
     common: Common = Field(default=..., exclude=True)
