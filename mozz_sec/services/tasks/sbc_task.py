@@ -25,7 +25,7 @@ class SubSbcTask(BaseSubTask):
 
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
-    file_path: Path = Field(default="", alias="file", exclude=True)
+    file_path: Path = Field(default="", alias="file", exclude=False)
 
 
 class SbcCleanseData(TestDataSbc):

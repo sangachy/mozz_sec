@@ -25,7 +25,6 @@ class ScanType(BaseModel):
     Returns:
         ScanType: The updated ScanType object.
     """
-    
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -132,12 +131,12 @@ class TestDataSbc(BaseModel):
         alias_generator=to_camel,
     )
 
-    url_list: List[HttpUrl] = Field(default_factory=list, alias="url-list", exclude=True)
+    url_list: List[HttpUrl] = Field(default_factory=list, alias="url-list", exclude=False)
     scan_type: ScanType = Field(default=..., alias="scan-type", exclude=False)
-    path_whitelist: List[str] = Field(default_factory=list, alias="path-whitelist", exclude=True)
-    file_blacklist: List[str] = Field(default_factory=list, alias="file-blacklist", exclude=True)
+    path_whitelist: List[str] = Field(default_factory=list, alias="path-whitelist", exclude=False)
+    file_blacklist: List[str] = Field(default_factory=list, alias="file-blacklist", exclude=False)
     # 隐藏参数，暂不对外呈现
-    rerun: bool = Field(default=False, exclude=True)
+    rerun: bool = Field(default=False, exclude=False)
 
 
 if __name__ == "__main__":

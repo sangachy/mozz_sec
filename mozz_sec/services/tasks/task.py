@@ -48,8 +48,8 @@ class BaseTask(TaskWithProgress):
 
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
-    common: Common = Field(default_factory=Common, exclude=True)
-    task_type: str = Field(default="UNDEFINED", exclude=True)
+    common: Common = Field(default_factory=Common, exclude=False)
+    task_type: str = Field(default="UNDEFINED", exclude=False)
 
 
 class TaskWithDetail(BaseTask):

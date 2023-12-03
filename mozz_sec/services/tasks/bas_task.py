@@ -44,7 +44,7 @@ class BasTaskDetail(TaskWithDetail):
 
     bas_vm_policy_url: Url
     bas_container_policy_url: Url
-    params: TestDataBas = Field(default_factory=TestDataBas, exclude=True)
+    params: TestDataBas = Field(default_factory=TestDataBas, exclude=False)
 
 
 class BasCleanseTask(TaskWithDetail):

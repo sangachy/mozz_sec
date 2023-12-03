@@ -71,7 +71,7 @@ class Params(BaseModel):
             - json_schema_extra: An optional JSON schema example for the configuration.
             - alias_generator: A function used to generate aliases for the configuration.
     """
-    
+
     model_config = ConfigDict(populate_by_name=True, json_schema_extra={"example": [{}]}, alias_generator=to_camel)
 
 
@@ -110,9 +110,9 @@ class CommonData(BaseModel):
         params: The parameters for the model. It is a Params object.
         env_info: The environment information. It is an EnvInfo object.
     """
-    
+
     model_config = ConfigDict(populate_by_name=True, alias_generator=to_camel)
 
-    common: Common = Field(default=..., exclude=True)
+    common: Common = Field(default=..., exclude=False)
     params: Params = Field(default=..., exclude=False)
-    env_info: EnvInfo = Field(default=..., alias="envInfo", exclude=True)
+    env_info: EnvInfo = Field(default=..., alias="envInfo", exclude=False)
