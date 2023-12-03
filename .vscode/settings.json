@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "binscope",
+        "fastapi",
+        "Mozz",
+        "opensource",
+        "pydantic",
+        "securecat",
+        "seninfo"
+    ],
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true
+}

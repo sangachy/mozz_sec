@@ -1,0 +1,9 @@
+{
+  "url-list": ["https://www.baidu.com"],
+  "scan-type": {
+    "binscope": true
+  },
+  "path-whitelist": [],
+  "file-blacklist": [],
+  "rerun": false
+}

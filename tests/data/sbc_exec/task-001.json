@@ -1,0 +1,54 @@
+{
+  "common": {
+    "pbi": "0",
+    "instanceInfo": {
+      "instanceId": "123",
+      "taskId": "456"
+    }
+  },
+  "detail": {
+    "progress": 0,
+    "status": "W",
+    "message": "",
+    "taskId": "",
+    "common": {
+      "pbi": "0",
+      "instanceInfo": {
+        "instanceId": "123",
+        "taskId": "456"
+      }
+    },
+    "serviceType": "DATA_CLEAN",
+    "secguard_workspace_url": "http://www.baidu.com/",
+    "params": {
+      "url-list": ["http://www.baidu.com/"],
+      "scan-type": {
+        "opensource": false,
+        "binscope": true,
+        "seninfo": false,
+        "securecat": false
+      },
+      "path-whitelist": [],
+      "file-blacklist": [],
+      "rerun": false,
+      "username": "p_mozzps",
+      "password": "Huawei12#$"
+    },
+    "details": [
+      {
+        "progress": 0,
+        "status": "W",
+        "message": "",
+        "taskId": "",
+        "category": "",
+        "category_url": "http://www.baidu.com/",
+        "sub_category": "",
+        "sub_category_url": "http://www.baidu.com/",
+        "cover": true,
+        "remark": "",
+        "report_url": "",
+        "file": ""
+      }
+    ]
+  }
+}

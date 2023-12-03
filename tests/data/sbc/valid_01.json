@@ -1,0 +1,14 @@
+{
+  "url-list": [],
+  "scan-type": {
+    "opensource": true,
+    "binscope": true,
+    "seninfo": false,
+    "securecat": false
+  },
+  "path-whitelist": [],
+  "file-blacklist": [],
+  "rerun": false,
+  "username": "p_mozzps",
+  "password": "Huawei12#$"
+}

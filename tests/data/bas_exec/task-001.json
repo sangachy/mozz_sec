@@ -1,0 +1,49 @@
+{
+  "common": {
+    "pbi": "0",
+    "instanceInfo": {
+      "instanceId": "123",
+      "taskId": "456"
+    }
+  },
+  "detail": {
+    "progress": 10,
+    "status": "W",
+    "message": "",
+    "taskId": "",
+    "common": {
+      "pbi": "0",
+      "instanceInfo": {
+        "instanceId": "123",
+        "taskId": "456"
+      }
+    },
+    "params": {
+      "plugin_set_names": [""],
+      "plugin_name_blacklist": [],
+      "plugin_name_whitelist": [],
+      "config": {},
+      "container_info": {},
+      "plugin_extra": [],
+      "plugin_extra_tc": {}
+    },
+    "secguard_workspace_url": "http://www.baidu.com/",
+            "bas_vm_policy_url": "http://www.baidu.com/",
+        "bas_container_policy_url": "http://www.baidu.com/",
+    "details": [
+      {
+        "progress": 10,
+        "status": "W",
+        "message": "",
+        "taskId": "",
+        "category": "",
+        "category_url": "http://www.baidu.com/",
+        "sub_category": "",
+        "sub_category_url": "http://www.baidu.com/",
+        "cover": true,
+        "remark": "",
+        "report_url": ""
+      }
+    ]
+  }
+}
